@@ -20,6 +20,6 @@ logging:
     root: warn
     com.tzeao: info
   file:
-    path: log/blog-pro.log
+    name: log/blog-pro
 server:
   port: 8081
