@@ -55,3 +55,8 @@
 2021-08-18 19:47:29.156  INFO 17424 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-08-18 19:47:29.157  INFO 17424 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2021-08-18 19:47:29.158  INFO 17424 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2021-08-18 19:48:03.791  INFO 22184 --- [  restartedMain] com.tzeao.blog.BlogApplication           : Starting BlogApplication using Java 1.8.0_281 on Tzeao with PID 22184 (E:\编程\code\blog\target\classes started by 童泽沼 in E:\编程\code\blog)
+2021-08-18 19:48:03.793  INFO 22184 --- [  restartedMain] com.tzeao.blog.BlogApplication           : The following profiles are active: pro
+2021-08-18 19:48:05.498  WARN 22184 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-08-18 19:48:05.681  WARN 22184 --- [  restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-08-18 19:48:05.788  INFO 22184 --- [  restartedMain] com.tzeao.blog.BlogApplication           : Started BlogApplication in 2.541 seconds (JVM running for 3.497)

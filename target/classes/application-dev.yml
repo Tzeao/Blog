@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useSSL=true&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+  jpa:
+    #进行格式化
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    #日志
+logging:
+  level:
+    root: info
+    com.tzeao: debug
+  file:
+    path: log/blog-dev.log
+server:
+  port: 8080

@@ -1,0 +1,25 @@
+spring:
+  thymeleaf:
+    mode: HTML
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useSSL=true&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+  jpa:
+    #进行格式化
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    #日志
+logging:
+  level:
+    root: warn
+    com.tzeao: info
+  file:
+    path: log/blog-pro.log
+server:
+  port: 8081
