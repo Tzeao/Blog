@@ -1,51 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head((~{::title}))">
     <meta charset="UTF-8">
     <!--    设置移动端浏览的效果-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客详情</title>
-    <!--    引入semantic-ui css样式-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <!--    引入文章排版css-->
-    <link rel="stylesheet" href="../static/css/typo.css">
-    <!--    引入动画    css-->
-    <link rel="stylesheet" href="../static/css/animate.css">
-    <!--    引入语法高亮-->
-    <link rel="stylesheet" href="../static/lib/prism/prism.css">
-    <!--    引入目录生成-->
-    <link rel="stylesheet" href="../static/lib/tocpot/tocbot.css">
-    <!--    引入自定义的css-->
-    <link rel="stylesheet" href="../static/css/me.css">
 </head>
 <body>
 
-<!--导航 semantic-ui 使用这个可以直接引用，类似bootstrap-->
-<!--ui 代表是一个ui组件-->
-<nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
-    <div class="ui container sticky">
-        <div class="ui inverted secondary stackable menu">
-            <!--logo-->
-            <h2 class="ui teal header item">Tzeao</h2>
-            <!--            编写小组件和图标-->
-            <a href="#" class="item_m item m-mobile-hide"><i class="home icon"></i>首页</a>
-            <a href="#" class="item_m item m-mobile-hide"><i class="idea icon"></i>分类</a>
-            <a href="#" class="item_m item m-mobile-hide"><i class="tags icon"></i>标签</a>
-            <a href="#" class="item_m item m-mobile-hide"><i class="clone icon"></i>归档</a>
-            <a href="#" class="item_m item m-mobile-hide"><i class="info icon"></i>关于我</a>
-            <!--            搜索栏-->
-            <div class="right item m-mobile-hide">
-                <div class="ui icon transparent input">
-                    <input type="text" style="color: aliceblue" placeholder="Search...">
-                    <i class="search link red icon"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="#" class="ui m-menu black icon button m-top-right m-mobile-show">
-        <i class="sidebar icon"></i>
-    </a>
-</nav>
+<div th:replace="_fragments::nav(0)"></div>
 <!--中间内容-->
 <div  class="m-container-small m-padded-tb-large animated fadeIn">
     <div class="ui container">
@@ -560,7 +523,7 @@ h5,h6{font-size:1em;}
                     </ui>
                 </div>
                 <div class="five wide column">
-                    <img src="../static/image/wx.jpg" alt="联系微信" class="ui right floated rounded bordered image"
+                    <img th:src="@{/image/wx.jpg}" src="../static/image/wx.jpg" alt="联系微信" class="ui right floated rounded bordered image"
                          style="width: 110px">
                 </div>
             </div>
@@ -572,7 +535,7 @@ h5,h6{font-size:1em;}
                     <h3 class="ui dividing header">Comments</h3>
                     <div class="comment">
                         <a class="avatar">
-                            <img src="../static/image/req.png" alt="#">
+                            <img th:src="@{/image/req.png}" src="../static/image/req.png" alt="#">
                         </a>
                         <div class="content">
                             <a class="author">Matt</a>
@@ -587,7 +550,7 @@ h5,h6{font-size:1em;}
                     </div>
                     <div class="comment">
                         <a class="avatar">
-                            <img src="../static/image/req.png" alt="#">
+                            <img th:src="@{/image/req.png}" src="../static/image/req.png" alt="#">
                         </a>
                         <div class="content">
                             <a class="author">Elliot Fu</a>
@@ -604,7 +567,7 @@ h5,h6{font-size:1em;}
                         <div class="comments">
                             <div class="comment">
                                 <a class="avatar">
-                                    <img src="../static/image/req.png" alt="#">
+                                    <img th:src="@{/image/req.png}" alt="#" src="#">
                                 </a>
                                 <div class="content">
                                     <a class="author">Jenny Hess</a>
@@ -621,7 +584,7 @@ h5,h6{font-size:1em;}
                     </div>
                     <div class="comment">
                         <a class="avatar">
-                            <img src="../static/image/req.png" alt="#">
+                            <img th:src="@{/image/req.png}" src="../static/image/req.png" alt="#">
                         </a>
                         <div class="content">
                             <a class="author">Joe Henderson</a>
@@ -681,58 +644,20 @@ h5,h6{font-size:1em;}
     <!--    <img src="./static/image/me.jpg" alt="#" class="ui rounded image" style="width: 120px !important;">-->
 </div>
 <!--底部-->
-<footer class="ui inverted vertical segment m-padded-tb-massive m-margin-tb-big">
-    <div class="ui center aligned container">
-        <!--    列布局 分成16份-->
-        <div class="ui divided inverted stackable grid">
-            <div class="three wide column">
-                <div class="ui link inverted list">
-                    <div class="item">
-                        <img src="../static/image/wx.jpg" class="ui rounded image" style="width: 110px" alt="网络不佳">
-                    </div>
-                </div>
-
-            </div>
-            <div class="three wide column">
-                <h4 class="ui inverted header m-opacity-mini">最新博客</h4>
-                <div class="ui link inverted list">
-                    <a href="#" class="item">用户故事</a>
-                    <a href="#" class="item">用户故事</a>
-                    <a href="#" class="item">用户故事</a>
-                </div>
-            </div>
-            <div class="three wide column">
-                <h4 class="ui inverted header m-opacity-mini">联系我</h4>
-                <div class="ui link inverted list">
-                    <a href="#" class="item">Email: 773238750@qq.com</a>
-                    <a href="#" class="item">QQ: 773238750</a>
-                </div>
-            </div>
-            <div class="seven wide column">
-                <h4 class="ui inverted header m-opacity-mini">Mind</h4>
-                <p class="m-text-thin m-text-spaced m-opacity-mini">
-                    你在一个清朗夏夜，望着繁密群星，有一种可望不可及的失望。我们如此可怜吗？不，决不！我们要征服宇宙。</p>
-            </div>
-
-        </div>
-        <!--    画一条线 写备案号-->
-        <div class="ui inverted section divider"></div>
-        <p class="m-text-thin m-text-spaced m-opacity-mini">Copyright&nbsp;&copy;&nbsp;2005&nbsp;-&nbsp;2021 Tzeao</p>
-    </div>
-</footer>
+<div th:replace="_fragments::footer"></div>
 
 <!--引入jquery-->
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!--引入semantic-ui js代码-->
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <!--语法高亮-->
-<script src="../static/lib/prism/prism.js"></script>
+<script th:src="@{/lib/prism/prism.js}"></script>
 <!--目录生成-->
-<script src="../static/lib/tocpot/tocbot.min.js"></script>
+<script th:src="@{/lib/tocpot/tocbot.min.js}"></script>
 <!--二维码生成-->
-<script src="../static/lib/qrcode/qrcode.min.js"></script>
+<script th:src="@{/lib/qrcode/qrcode.min.js}"></script>
 <!--引入滚动检测-->
-<script src="../static/lib/wayponts/jquery.waypoints.min.js"></script>
+<script th:src="@{/lib/wayponts/jquery.waypoints.min.js}"></script>
 <!--平滑滚动-->
 <script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"></script>
 <!--自己写的-->
