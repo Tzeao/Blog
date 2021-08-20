@@ -1,0 +1,152 @@
+body {
+    /*背景图片*/
+    background: url("../image/bg.jpg") no-repeat fixed !important;
+    background-size: 1600px !important;
+}
+
+.m-padded-tb-mini {
+    /*1个em等于14个px*/
+    padding-top: 0.2em !important;
+    padding-bottom: 0.2em !important;
+    opacity: 70% !important;
+}
+
+.m-padded-tb-massive {
+    padding-top: 4em !important;
+    padding-bottom: 4em !important;
+}
+
+.m-padded-tb-large {
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+}
+
+.m-padded-mini {
+    padding: 0.3em !important;
+}
+.m-padded{
+    padding: 1em !important;
+}
+
+.m-margin-tb-large {
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em !important;
+}
+
+.m-margin-tb-small {
+    margin-top: 0.5em !important;
+}
+
+.m-margin-tb-big {
+    margin-top: 2em !important;
+}
+
+.m-margin-bottom-mini {
+    margin-bottom: 0.5em !important;
+}
+
+/*------text 字体-----------*/
+.m-text {
+    font-weight: 300 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.8 !important;
+}
+
+.m-text-thin {
+    font-weight: 300 !important;
+}
+
+.m-text-spaced {
+    letter-spacing: 1px !important;
+}
+
+.m-text-lined {
+    line-height: 1.8 !important;
+}
+
+.m-opacity-mini {
+    opacity: 0.8 !important;
+}
+
+/*----------display----------*/
+.m-inline-block {
+    display: inline-block !important;
+}
+
+/*----------container---------*/
+.m-container {
+    max-width: 72em !important;
+    margin: auto !important;
+}
+
+.m-container-small {
+    max-width: 70em !important;
+    margin: auto !important;
+}
+
+/*------------color------------*/
+.m-black {
+    color: #333 !important;
+}
+
+/*固定*/
+.flex {
+    position: fixed !important;
+    top: 0 !important;
+}
+
+/*--------定位-----------*/
+.m-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.m-fixed{
+    position: fixed !important;
+    z-index: 1 !important;
+}
+.m-right-bottom{
+    bottom: 0!important;
+    right: 0 !important;
+}
+
+/*---平时隐藏菜单按钮---*/
+.m-mobile-show {
+    display: none !important;
+}
+
+/*----手机端隐藏----*/
+@media screen and (max-width: 768px) {
+    .m-mobile-hide {
+        display: none !important;
+    }
+
+    .m-mobile-show {
+        display: block !important;
+    }
+
+    .m-mobile-wide {
+        width: 100% !important;
+    }
+}
+
+/*----------阴影-------*/
+.m-shadow-small {
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.a{
+    display: block !important;
+    position: relative !important;
+    top: -90px !important;
+    z-index: 100;
+    font-weight: bold;
+}
+.m-type{
+    opacity: 0.9!important;
+}
+.m-bg{
+    filter: brightness(60%) !important;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head((~{::title}))">
+    <meta charset="UTF-8">
+    <!--    设置移动端浏览的效果-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我</title>
+</head>
+<body>
+
+<div th:replace="_fragments::nav(5)"></div>
+<!--顶部背景图片-->
+<div class="m-bg-type_outer" style="width: 100%;height: 40%">
+    <img src="https://images.newstar.net.cn/img/aboutme.png" alt="" class="ui m-bg image"
+         style="width: 100%;height: 100%">
+    <div class="m-bg-class_cover">
+        <div class="ui container center aligned" style="color:white;position: relative ; top: -210px !important;">
+            <h1 class="m-font-size-title" style="font-family:STSong,serif">关于我</h1>
+            <h3 class="m-font-size-text-init-title m-margin-top">请善待自己</h3>
+        </div>
+    </div>
+</div>
+<!--中间内容-->
+<div class="m-container-small m-type  m-padded-tb-large">
+    <div class="ui segment a center aligned">
+        <div align="center">
+            <img class="ui circular image" src="../static/image/me.jpg" style="width: 200px;height: 200px;" alt="">
+        </div>
+        <div class="m-margin-top-small" style="font-size: x-large;font-family: STSong,serif">君子慎独</div>
+        <hr class="m-margin-top-small" style="width: 30%">
+        <br>
+        <div>
+            <p>“欢迎!”</p>
+            <p>“我是Tzeao亦或是君子慎独”</p>
+            <p>“道也者，不可须臾离也；可离，非道也。. 是故君子戒慎乎其所不睹，恐惧乎其所不闻。. 莫见乎隐，莫显乎微，故君子慎其独也”</p>
+            <br>
+            <p>不管我们是什么样的年纪，</p>
+            <p>都希望大家有一颗孩童般的心，</p>
+            <p>能够心中向善，</p>
+            <p>保持好奇心、求知欲和对正义的渴慕。</p>
+            <br>
+            <p>心中的欲念是一个筛子，</p>
+            <p>筛子装不满水，</p>
+            <p>无论多少东西都填满不了人心，</p>
+            <p>所以人的欲望一定要限定在一个具体的事情上，</p>
+            <p>这样你才会有真实的满足感，</p>
+            <p>否则你不可能有满足感。</p>
+            <br>
+            <h4 class="ui center aligned header">THE END</h4>
+        </div>
+        <hr class="m-margin-top-large">
+        <br>
+        <div class="ui orange basic label m-margin-tb-tiny">
+            <p style="font-size: medium">事隔经年，若我会见到你，我该如何祝贺你，以眼泪，以沉默。</p>
+        </div>
+        <div class="ui segment">
+            <a target="_blank" href="https://github.com/Tzeao/Blog-Page" class="ui circular icon button"><i class="github icon"></i></a>
+            <a target="_blank" href="weixin://" class="ui wx circular icon button" data-content="773238750" data-position="bottom center"><i class="wechat icon"></i></a>
+            <a target="_blank" href="https://wpa.qq.com/msgrd?v=3&uin=773238750&site=qq&menu=yes" class="ui circular icon button"><i class="qq icon"></i></a>
+            <a target="_blank" href="mailto: 773238750@qq.com" class="ui circular icon button"><i class="mail icon"></i></a>
+            <a target="_blank" href="https://blog.csdn.net/weixin_51444617?spm=1001.2101.3001.5343" class="ui circular icon button"><i class="bold icon"></i></a>
+        </div>
+    </div>
+</div>
+<!--底部-->
+<div th:replace="_fragments::footer"></div>
+
+<!--引入jquery-->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--引入semantic-ui js代码-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--自己写的-->
+<script>
+    <!--    菜单-->
+    $('.m-menu').click(function () {
+        $('.item_m').toggleClass('m-mobile-hide');
+    });
+    $('.wx').popup()
+</script>
+</body>
+</html>
