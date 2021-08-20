@@ -22,6 +22,6 @@ public class IndexController {
         //    throw  new NotFoundException("博客不存在");
         //}
         //System.out.println("aaaa");
-        return "index";
+        return "admin/blogs-input";
     }
 }

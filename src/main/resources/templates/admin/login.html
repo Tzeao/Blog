@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/composant::head(~{::title})">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>博客管理后台登录</title>
+
+</head>
+
+<body class="text-center" style="background: url(http://img.netbian.com/file/2021/0703/smallf27b49517d6436c5bdc301fd711631e41625305469.jpg) no-repeat !important; background-size: 100% 750px !important;">
+<form class="form-signin" th:action="@{/admin/login}" method="post">
+  <img class="mb-4" th:src="@{/image/favicon.ico}" alt="" width="72" height="72" src="#">
+  <h1 class="h3 mb-3 font-weight-normal">博客管理后台登录</h1>
+  <label class="sr-only">Username</label>
+    <input type="text" class="form-control" name="username" placeholder="用户名" required="" autofocus="">
+  <label class="sr-only">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="密码" required="">
+  <div align="center">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" style="width:150px;border: 10px!important;background: #bb99ff" >登录</button>
+  </div>
+
+</form>
+
+</body>
+
+</html>
