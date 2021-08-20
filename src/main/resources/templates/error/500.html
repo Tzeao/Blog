@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-      <meta charset="UTF-8">
+      <meta charset="utf-8">
+      <meta name="referrer" content="never">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>500</title>
+      <link rel="icon" href="https://pic.netbian.com/uploads/allimg/210423/224716-1619189236e4d9.jpg" type="image/x-ico"
+            sizes="16x16">
+      <style>
+          body {
+              background: url("https://file.moyublog.com/d/file/2021-08-13/l5e2yz0ugv3.jpg") no-repeat;
+              background-size: 100% 750px;
+              background-clip: border-box;
+              text-align: center;
+              align-content: center;
+          }
+
+          .box__button {
+              width: 60px;
+              display: block;
+              position: relative;
+              background: #FF5E65;
+              border: 1px solid transparent;
+              border-radius: 50px;
+              height: 50px;
+              text-align: center;
+              text-decoration: none;
+              color: #fff;
+              line-height: 50px;
+              font-size: 18px;
+              padding: 0 70px;
+              white-space: nowrap;
+              margin-top: 25px;
+              transition: background .5s ease;
+              overflow: hidden;
+              left: 600px;
+          }
+
+          .box__button:hover {
+              background: transparent;
+              border-color: #fff;
+              color: blue;
+          }
+          div{
+              position: relative;
+              top: 200px;
+              text-align: center;
+              align-content: center;
+          }
+      </style>
 </head>
+
 <body>
-<h1>500</h1>
+<div>
+      <h1 style="color: gold;font-size: 60px">500错误!</h1>
+      <h3>抱歉页面迷路了,请联系管理员：773238750@qq.com</h3>
+      <a th:href="@{/}" class="box__button">首页</a>
+</div>
+
 </body>
+
 </html>

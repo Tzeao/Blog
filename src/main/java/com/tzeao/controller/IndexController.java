@@ -21,7 +21,7 @@ public class IndexController {
         //    //自定义 NotFoundException
         //    throw  new NotFoundException("博客不存在");
         //}
-        System.out.println("aaaa");
+        //System.out.println("aaaa");
         return "index";
     }
 }

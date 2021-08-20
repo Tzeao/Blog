@@ -1,5 +1,6 @@
 spring:
   thymeleaf:
     mode: HTML
+    cache: false
   profiles:
     active: dev

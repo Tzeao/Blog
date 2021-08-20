@@ -133,5 +133,6 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="semantic" level="application" />
     <orderEntry type="library" name="jquery.scrollto" level="application" />
+    <orderEntry type="library" name="20200101-cc0f0c1509531" level="application" />
   </component>
 </module>
