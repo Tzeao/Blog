@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/composant::head(~{::title})">
+      <!--    设置移动端浏览的效果-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>博客管理</title>
+      <link rel="icon" href="https://pic.netbian.com/uploads/allimg/210423/224716-1619189236e4d9.jpg" type="image/x-ico"
+            sizes="16x16">
+</head>
+<body>
+
+<div th:replace="admin/composant::nav(0)"></div>
+<!--二级导航-->
+<div class="ui stackable attached pointing menu  m-shadow-small">
+      <div class="ui container">
+            <div class="right menu">
+                  <a href="#" class="ui m-item m-mobile-hide teal button">新增</a>
+                  <a href="#" class="ui m-item orange m-mobile-hide item">列表</a>
+                  <a href="#" class="item m-item green m-mobile-hide">发布</a>
+                  <a href="#" class="ui m-two-menu black icon button m-mobile-show">
+                        <i class="sidebar icon"></i>
+                  </a>
+            </div>
+      </div>
+</div>
+
+<div class="m-container-small m-padded-tb-large">
+      <div class="ui content">
+            <div class="ui success message large" align="center">
+                  <h1>Hi!</h1>
+                  <p>Tzeao,欢迎回来！</p>
+            </div>
+            <div class="ui success message large" align="center">
+                  <img src="https://c.53326.com/d/file/20191115/55ycot3za3r.jpg" alt="#"
+                       class="ui rounded bordered fluid image">
+            </div>
+      </div>
+</div>
+
+
+<!--底部-->
+<div th:replace="admin/composant::footer"></div>
+
+<!--引入jquery-->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--引入semantic-ui js代码-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--自己写的-->
+<script>
+
+     $('.m-menu').click(function () {
+          $('.item_m').toggleClass('m-mobile-hide');
+     });
+     // <!--    二菜单-->
+     $('.m-two-menu').click(function () {
+          $('.m-item').toggleClass('m-mobile-hide');
+     });
+     //    初始化下拉组件
+     $('.ui.dropdown').dropdown();
+</script>
+</body>
+</html>

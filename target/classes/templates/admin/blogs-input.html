@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/composant::head(~{::title})">
+    <meta charset="UTF-8">
+    <!--    设置移动端浏览的效果-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客发布</title>
+</head>
+<body>
+<div th:replace="admin/composant::nav(2)"></div>
+<!--二级导航-->
+<div class="ui stackable attached pointing menu  m-shadow-small">
+    <div class="ui container">
+        <div class="right menu">
+            <a href="#" class="ui m-item m-mobile-hide teal button">新增</a>
+            <a href="#" class="ui m-item orange m-mobile-hide item ">列表</a>
+            <a href="#" class="item m-item green m-mobile-hide active">发布</a>
+            <a href="#" class="ui m-two-menu black icon button m-mobile-show">
+                <i class="sidebar icon"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--中间内容-->
+<div class="m-container-small m-padded-tb-large">
+    <div class="ui container">
+        <form action="#" method="post" class="ui form">
+            <label class=" field">
+                <div class="ui left labeled input">
+                    <div class="ui dropdown selection compact teal basic label">
+                        <input type="hidden" value="原创">
+                        <i class="dropdown icon"></i>
+                        <div class="text">原创</div>
+                        <div class="menu">
+                            <div class="item" data-value="原创">原创</div>
+                            <div class="item" data-value="转载">转载</div>
+                        </div>
+                    </div>
+                    <input type="text" name="title" placeholder="标题" required>
+                </div>
+            </label>
+            <!--            使用MarkDown插件-->
+            <div class="field">
+                <div id="md-content" style="z-index: 1!important;">
+                    <label>
+                        <textarea placeholder="博客内容" name="content" style="display: none"></textarea>
+                    </label>
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <div class="ui left labeled action input">
+                        <label class="ui compact teal basic label">分类</label>
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">错误日志</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">错误日志</div>
+                                <div class="item" data-value="2">开发者手册</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left labeled action input">
+                        <label class="ui compact teal basic label">标签</label>
+                        <div class="ui fluid multiple search selection dropdown">
+                            <input type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Java</div>
+                            <div class="menu">
+                                <div class="item" data-value="1">Java</div>
+                                <div class="item" data-value="2">JavaScript</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left labeled input">
+                    <label class="ui teal basic label">图片</label>
+                    <input type="text" name="indexPicture" placeholder="首图地址" required>
+                </div>
+            </div>
+            <div class="inline fields">
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="hidden" name="recommend" id="recommend" class="hidden">
+                        <label for="recommend">推荐</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="hidden" name="shareInfo" id="shareInfo" class="hidden">
+                        <label for="shareInfo">转载声明</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="hidden" name="comment" id="comment" class="hidden">
+                        <label for="comment">评论</label>
+                    </div>
+                </div>
+            </div>
+            <div class="ui right aligned container">
+                <button type="button" class="ui teal button" onauxclick="window.history.go(-1)">返回</button>
+                <button class="ui green button">保存</button>
+                <button class="ui orange button">发布</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--底部-->
+<div th:replace="admin/composant::footer"></div>
+
+<!--引入jquery-->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--引入semantic-ui js代码-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--引入MarkDown的js-->
+<script th:src="@{/lib/editormd/editormd.min.js}"></script>
+<!--自己写的-->
+<script>
+
+    $('.m-menu').click(function () {
+        $('.item_m').toggleClass('m-mobile-hide');
+    });
+    <!--    二菜单-->
+    $('.m-two-menu').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+    //    初始化下拉组件
+    $('.ui.dropdown').dropdown();
+
+    //    初始化MarkDown
+    var contentEditor;
+
+    $(function () {
+        contentEditor = editormd("md-content", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+
+            // path: "../static/lib/editormd/lib/"
+            path: "/lib/editormd/lib/"
+        });
+
+    });
+</script>
+</body>
+</html>
