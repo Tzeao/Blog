@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="admin/composant::head(~{::title})">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>博客管理后台登录</title>
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <meta name="referrer" content="never">
+      <title>博客管理后台登录</title>
+      <link rel="icon" href="https://pic.netbian.com/uploads/allimg/210423/224716-1619189236e4d9.jpg" type="image/x-ico"
+            sizes="16x16">
+      <!-- Bootstrap core CSS -->
+      <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+      <!-- Custom styles for this template -->
+      <link th:href="@{/css/signin.css}" rel="stylesheet">
 
 </head>
 
-<body class="text-center" style="background: url(http://img.netbian.com/file/2021/0703/smallf27b49517d6436c5bdc301fd711631e41625305469.jpg) no-repeat !important; background-size: 100% 750px !important;">
+<body class="text-center">
 <form class="form-signin" th:action="@{/admin/login}" method="post">
-  <img class="mb-4" th:src="@{/image/favicon.ico}" alt="" width="72" height="72" src="#">
-  <h1 class="h3 mb-3 font-weight-normal">博客管理后台登录</h1>
-  <label class="sr-only">Username</label>
-    <input type="text" class="form-control" name="username" placeholder="用户名" required="" autofocus="">
-  <label class="sr-only">Password</label>
-    <input type="password" class="form-control" name="password" placeholder="密码" required="">
-  <div align="center">
-    <button class="btn btn-lg btn-primary btn-block" type="submit" style="width:150px;border: 10px!important;background: #bb99ff" >登录</button>
-  </div>
-
+      <img class="mb-4" th:src="@{/image/favicon.ico}" alt="" width="72" height="72" src="#">
+      <h1 class="h3 mb-3 font-weight-normal">博客管理后台登录</h1>
+      <label class="sr-only">Username</label>
+      <label>
+            <input type="text" class="form-control" name="username" placeholder="用户名" required="" autofocus="">
+      </label>
+      <label class="sr-only">Password</label>
+      <label>
+            <input type="password" class="form-control" name="password" placeholder="密码" required="">
+      </label>
+      <div align="center">
+            <button class="btn btn-lg btn-primary btn-block" type="submit"
+                    style="width:150px;border: 10px!important;background: #bb99ff">登录
+            </button>
+      </div>
+      <br>
+      <div style="color: red" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
 </form>
-
+<script>
+     // 登录验证
+      $('.form-signin').form({
+           field: {
+                username:{
+                     identifier:"username",
+                     rules:[{
+                          type:'empty',
+                          prompt:'请输入用户名'
+                     }]
+                }
+                password:{
+                     identifier:"password",
+                     rules:[{
+                          type:'empty',
+                          prompt:'请输入密码'
+                     }]
+                }
+           }
+      })
+</script>
 </body>
 
 </html>
