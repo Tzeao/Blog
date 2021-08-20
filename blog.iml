@@ -14,7 +14,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="entityManagerFactory" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -33,6 +35,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="semantic-ui" level="application" />
+    <orderEntry type="library" name="@types/jquery" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="bootstrap-grid" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="semantic" level="application" />
+    <orderEntry type="library" name="jquery.scrollto" level="application" />
+    <orderEntry type="library" name="20200101-cc0f0c1509531" level="application" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.9" level="project" />
@@ -88,7 +98,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.12.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:2.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.50" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.50" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.50" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.9" level="project" />
@@ -126,13 +135,9 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.8.2" level="project" />
-    <orderEntry type="library" name="semantic-ui" level="application" />
-    <orderEntry type="library" name="@types/jquery" level="application" />
-    <orderEntry type="library" name="bootstrap" level="application" />
-    <orderEntry type="library" name="bootstrap-grid" level="application" />
-    <orderEntry type="library" name="jquery" level="application" />
-    <orderEntry type="library" name="semantic" level="application" />
-    <orderEntry type="library" name="jquery.scrollto" level="application" />
-    <orderEntry type="library" name="20200101-cc0f0c1509531" level="application" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-validation:2.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.50" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.2.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" level="project" />
   </component>
 </module>
