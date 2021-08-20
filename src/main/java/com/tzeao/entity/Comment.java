@@ -2,11 +2,16 @@ package com.tzeao.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author 君子慎独
  * @create 2021/8/20 0020 18:31
+ * <p>
+ * <p>
+ * 评论类要进行自关联   ---------  父评论可以有多个子评论
  */
 @Entity
 @Table(name = "tz_comment")
@@ -23,6 +28,16 @@ public class Comment {
     private Date createTime;
     @ManyToOne
     private Blog blog;
+    /**
+     * 父
+     */
+    @OneToMany(mappedBy = "parentComment")
+    private List<Comment> replyComment = new ArrayList<>();
+    /**
+     * 子
+     */
+    @ManyToOne
+    private Comment parentComment;
 
     public Comment() {
     }
@@ -37,6 +52,22 @@ public class Comment {
 
     public Long getId() {
         return id;
+    }
+
+    public List<Comment> getReplyComment() {
+        return replyComment;
+    }
+
+    public void setReplyComment(List<Comment> replyComment) {
+        this.replyComment = replyComment;
+    }
+
+    public Comment getParentComment() {
+        return parentComment;
+    }
+
+    public void setParentComment(Comment parentComment) {
+        this.parentComment = parentComment;
     }
 
     public void setId(Long id) {
