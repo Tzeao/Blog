@@ -3,7 +3,9 @@ package com.tzeao.entity;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author 君子慎独
@@ -20,6 +22,13 @@ public class Blog {
      * commentabled 评论是否开启
      * published 是否发布
      * recommend 是否推荐
+     * <p>
+     * <p>
+     * 、、@ManyToOne 代表多对一中的一
+     * 、、@OneToMany 代表多对一中的多
+     * z @ManyToMany 多对多
+     * <p>
+     * 。。 @ManyToMany(cascade = {CascadeType.PERSIST}) 新增的不会替换掉用来的值，一起保存
      */
     @Id
     @GeneratedValue
@@ -40,7 +49,40 @@ public class Blog {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
 
+    @ManyToOne
+    private Type type;
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    private List<Tags> tags = new ArrayList<>();
+    @ManyToOne
+    private User user;
+    @OneToMany(mappedBy = "blog")
+    private List<Comment> comments = new ArrayList<>();
+
     public Blog() {
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Tags> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tags> tags) {
+        this.tags = tags;
     }
 
     public Long getId() {
@@ -59,12 +101,21 @@ public class Blog {
         this.title = title;
     }
 
+
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public String getFirstPicture() {
