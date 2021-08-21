@@ -39,7 +39,11 @@ public class ShiroConfig {
         linkedMap.put("/admin", "anon");
         linkedMap.put("/admin/login", "anon");
         linkedMap.put("/admin/blogs-input", "authc");
-        linkedMap.put("/admin/logout", "anon");
+        linkedMap.put("/admin/logout", "authc");
+        linkedMap.put("/admin/types", "authc");
+        linkedMap.put("/admin/tags", "authc");
+        linkedMap.put("/admin/types/**", "authc");
+        linkedMap.put("/admin/tags/**", "authc");
         bean.setFilterChainDefinitionMap(linkedMap);
 //      没有权限时会跳转 登录页面
         bean.setLoginUrl("/admin");

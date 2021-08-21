@@ -4,19 +4,19 @@
       <meta charset="UTF-8">
       <!--    设置移动端浏览的效果-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>分类管理</title>
+      <title>标签管理</title>
 </head>
 <body>
 
 <!--导航 semantic-ui 使用这个可以直接引用，类似bootstrap-->
 <!--ui 代表是一个ui组件-->
-<div th:replace="admin/composant::nav(2)"></div>
+<div th:replace="admin/composant::nav(3)"></div>
 
 <!--二级导航-->
 <div class="ui stackable attached pointing menu  m-shadow-small">
       <div class="ui container">
             <div class="right menu">
-                  <a th:href="@{/admin/types/input}" class="ui m-item m-mobile-hide teal button">分类新增</a>
+                  <a th:href="@{/admin/tags/input}" class="ui m-item m-mobile-hide teal button">标签新增</a>
                   <a href="#" class="ui m-item orange m-mobile-hide item active">列表</a>
                   <a href="#" class="item m-item green m-mobile-hide">发布</a>
                   <a href="#" class="ui m-two-menu black icon button m-mobile-show">
@@ -43,12 +43,12 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr th:each="type,iterStar:${page.content}">
+                  <tr th:each="tag,iterStar:${page.content}">
                         <td th:text="${iterStar.count}"></td>
-                        <td th:text="${type.name}">学习</td>
+                        <td th:text="${tag.name}">学习</td>
                         <td>
-                              <a th:href="@{/admin/types/{id}/input(id=${type.id})}" class="ui green mini basic button">编辑</a>
-                              <a th:href="@{/admin/types/{id}/delete(id=${type.id})}" class="ui red mini basic button">删除</a>
+                              <a th:href="@{/admin/tags/{id}/input(id=${tag.id})}" class="ui green mini basic button">编辑</a>
+                              <a th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" class="ui red mini basic button">删除</a>
                         </td>
                   </tr>
                   </tbody>
@@ -56,12 +56,12 @@
                   <tr>
                         <th colspan="6" th:if="${page.totalPages}>1">
                               <div class="ui center aligned pagination mini ca menu">
-                                    <a class="icon item" th:href="@{/admin/types(page=${page.number}-1)}"
+                                    <a class="icon item" th:href="@{/admin/tags(page=${page.number}-1)}"
                                        th:unless="${page.first}">
                                           <i class="left chevron icon"></i>上一页
                                     </a>
 
-                                    <a class="icon item" th:href="@{/admin/types(page=${page.number}+1)}"
+                                    <a class="icon item" th:href="@{/admin/tags(page=${page.number}+1)}"
                                        th:unless="${page.last}">
                                           下一页<i class="right chevron icon"></i>
                                     </a>

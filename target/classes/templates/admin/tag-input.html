@@ -4,15 +4,15 @@
       <meta charset="UTF-8">
       <!--    设置移动端浏览的效果-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>分类新增</title>
+      <title>标签新增</title>
 </head>
 <body>
-<div th:replace="admin/composant::nav(2)"></div>
+<div th:replace="admin/composant::nav(3)"></div>
 <!--二级导航-->
 <div class="ui stackable attached pointing menu  m-shadow-small">
       <div class="ui container">
             <div class="right menu">
-                  <a th:href="@{/admin/types/input}" class="ui m-item m-mobile-hide teal button">分类新增</a>
+                  <a th:href="@{/admin/tags/input}" class="ui m-item m-mobile-hide teal button">标签新增</a>
                   <a href="#" class="ui m-item orange m-mobile-hide item ">列表</a>
                   <a href="#" class="item m-item green m-mobile-hide active">发布</a>
                   <a href="#" class="ui m-two-menu black icon button m-mobile-show">
@@ -25,7 +25,7 @@
 <!--中间内容-->
 <div class="m-container-small m-padded-tb-large">
       <div class="ui container">
-            <form th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})} "   method="post" class="ui form" th:object="${type}">
+            <form th:action="*{id}==null ? @{/admin/tags} : @{/admin/tags/{id}(id=*{id})} "   method="post" class="ui form" th:object="${tag}">
                   <input type="hidden" name="id" th:value="*{id}">
                   <div class="required field">
                         <div class="ui left labeled input">

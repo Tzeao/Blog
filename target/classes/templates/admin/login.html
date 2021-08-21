@@ -35,8 +35,7 @@
             </button>
       </div>
       <br>
-      <div th:text="${message}"></div>
-      <div class="ui error mini basic message"></div>
+      <div class="ui error mini message"></div>
       <div class="ui negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
 </form>
 <!--引入jquery-->
@@ -46,23 +45,23 @@
 <script>
      // 登录验证
      $('.ui.form').form({
-          field: {
-               username: {
-                    identifier: "username",
+          fields : {
+               username : {
+                    identifier: 'username',
                     rules: [{
-                         type: 'empty',
+                         type : 'empty',
                          prompt: '请输入用户名'
                     }]
                },
-               password: {
-                    identifier: "password",
+               password : {
+                    identifier: 'password',
                     rules: [{
-                         type: 'empty',
+                         type : 'empty',
                          prompt: '请输入密码'
                     }]
                }
           }
-     })
+     });
 </script>
 </body>
 

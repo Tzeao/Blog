@@ -1,6 +1,7 @@
 package com.tzeao.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Type {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty(message = "分类名称不能为空")
     private String name;
 
     @OneToMany(mappedBy = "type")
