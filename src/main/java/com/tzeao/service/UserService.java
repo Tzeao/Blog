@@ -10,5 +10,5 @@ public interface UserService {
     /**
      * 检查用户登录
      */
-    User checkUser(String username,String password);
+    User checkUser(String username);
 }

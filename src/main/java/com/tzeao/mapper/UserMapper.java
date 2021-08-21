@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserMapper extends JpaRepository<User,Long> {
 
-    User findAllByUsernameAndPassword(String username,String password);
+    User findAllByUsername(String username);
 }

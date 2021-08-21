@@ -26,6 +26,7 @@ public class User {
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
+    private String salt;
     @OneToMany(mappedBy = "user")
     private List<Blog> blogs = new ArrayList<>();
 
@@ -50,6 +51,14 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public void setUsername(String username) {
