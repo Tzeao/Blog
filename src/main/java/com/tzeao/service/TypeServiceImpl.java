@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Author 君子慎独
  * @create 2021/8/21 0021 16:30
@@ -52,6 +54,11 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public void deleteType(Long id) {
         typeMapper.deleteById(id);
+    }
+
+    @Override
+    public List<Type> listType() {
+        return typeMapper.findAll();
     }
 
     @Override
