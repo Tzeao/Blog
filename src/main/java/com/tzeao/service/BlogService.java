@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface BlogService {
     Blog getBolg(Long id);
+    Blog getAndConvert(Long id);
 
     Page<Blog> listBlog(Pageable pageable, BlogQuery blog);
 

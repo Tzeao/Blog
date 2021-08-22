@@ -4,9 +4,9 @@ import com.tzeao.entity.Blog;
 import com.tzeao.entity.Type;
 import com.tzeao.error.NotFoundException;
 import com.tzeao.mapper.BlogMapper;
+import com.tzeao.utils.MarkdownUtils;
 import com.tzeao.utils.MyBeanUtils;
 import com.tzeao.vo.BlogQuery;
-import org.apache.catalina.mbeans.MBeanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,7 +21,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.swing.plaf.metal.MetalButtonUI;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +37,22 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getBolg(Long id) {
         return blogMapper.getById(id);
+    }
+
+    @Transactional
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = blogMapper.getById(id);
+        if (blog == null) {
+            throw new NotFoundException("该博客不存在");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog,b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+
+        //blogRepository.updateViews(id);
+        return b;
     }
 
     @Override
@@ -70,7 +85,7 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Page<Blog> listBlog(String query, Pageable pageable) {
 
-        return blogMapper.findTopBy(query,pageable);
+        return blogMapper.findTopBy(query, pageable);
     }
 
     @Override
