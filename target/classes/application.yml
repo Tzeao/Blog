@@ -4,3 +4,5 @@ spring:
     cache: false
   profiles:
     active: dev
+
+comment.avatar: /image/req.png

@@ -568,20 +568,20 @@ h5,h6{font-size:1em;}
             <div  class="ui bottom attached segment">
                   <div id="comment-container" class="ui teal segment">
                         <div th:fragment="commendList">
-                              <div class="ui threaded comments">
+                              <div class="ui threaded comments" style="max-width: 100%">
                                     <h3 class="ui dividing header">Comments</h3>
-                                    <div class="comment">
+                                    <div class="comment" th:each="commend:${commends}">
                                           <a class="avatar">
                                                 <img th:src="@{/image/req.png}" src="../static/image/req.png" alt="#">
                                           </a>
                                           <div class="content">
-                                                <a class="author">Matt</a>
+                                                <a class="author" th:text="${commend.nickname}">Matt</a>
                                                 <div class="metadata">
-                                                      <span class="date">今天下午 5:42</span>
+                                                      <span class="date" th:text="${#dates.format(commend.createTime)}">今天下午 5:42</span>
                                                 </div>
-                                                <div class="text">太赞了！</div>
+                                                <div class="text" th:text="${commend.content}">太赞了！</div>
                                                 <div class="actions">
-                                                      <a class="reply" data-commendid="1" data-commendusername="Math" onclick="reply(this)">回复</a>
+                                                      <a class="reply" data-commendid="1" th:attr="data-commendid=${commend.id},data-commendusername=${commend.nickname}" data-commendusername="Math"  onclick="reply(this)">回复</a>
                                                 </div>
                                           </div>
                                     </div>
@@ -648,7 +648,7 @@ h5,h6{font-size:1em;}
                               <div class="field m-mobile-wide m-margin-bottom-mini">
                                     <div class="ui left icon input">
                                           <i class="user icon"></i>
-                                          <input type="text" name="username" placeholder="姓名">
+                                          <input type="text" name="nickname" placeholder="姓名">
                                     </div>
                               </div>
                               <div class="field m-mobile-wide m-margin-bottom-mini">
@@ -788,7 +788,7 @@ h5,h6{font-size:1em;}
                     ]
                },
                content: {
-                    identifier: 'username',
+                    identifier: 'nickname',
                     rules: [{
                          type: 'empty',
                          prompt: '请输入你的大名'
@@ -814,10 +814,10 @@ h5,h6{font-size:1em;}
           }
      });
      function postData() {
-          $("#comment-container").load(/*[[@{/comments}]]*/"",{
+          $("#comment-container").load(/*[[@{/commends}]]*/"",{
                "parentComment.id" : $("[name='parentComment.id']").val(),
                "blog.id" : $("[name='blog.id']").val(),
-               "username": $("[name='username']").val(),
+               "nickname": $("[name='nickname']").val(),
                "email"   : $("[name='email']").val(),
                "content" : $("[name='content']").val()
           },function (responseTxt, statusTxt, xhr) {
@@ -825,7 +825,7 @@ h5,h6{font-size:1em;}
                clearContent();
           });
           function clearContent() {
-               $("[name='username']").val('');
+               $("[name='nickname']").val('');
                $("[name='email']").val('');
                $("[name='content']").val('');
                $("[name='parentComment.id']").val(-1);
