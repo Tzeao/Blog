@@ -213,6 +213,27 @@ public class Blog {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+        public void init() {
+        this.tagIds = tagsToIds(this.getTags());
+    }
+        private String tagsToIds(List<Tags> tags) {
+        if (!tags.isEmpty()) {
+            StringBuffer ids = new StringBuffer();
+            boolean flag = false;
+            for (Tags tag : tags) {
+                if (flag) {
+                    ids.append(",");
+                } else {
+                    flag = true;
+                }
+                ids.append(tag.getId());
+            }
+            return ids.toString();
+        } else {
+            return tagIds;
+        }
+    }
+
 
     @Override
     public String toString() {

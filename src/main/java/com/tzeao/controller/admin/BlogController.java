@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -77,6 +78,7 @@ public class BlogController {
     public String editInput(@PathVariable Long id, Model model) {
         setTypeAndTag(model);
         Blog blog = blogService.getBolg(id);
+        blog.init();
         model.addAttribute("blog", blog);
         return INPUT;
     }
@@ -87,12 +89,14 @@ public class BlogController {
         blog.setUser((User) session.getAttribute("user"));
         blog.setType(typeService.getType(blog.getType().getId()));
         blog.setTags(tagService.listTags(blog.getTagIds()));
-        Blog b;
-        if (blog.getId() == null) {
-            b = blogService.saveBlog(blog);
-        } else {
-            b = blogService.updateBlog(blog.getId(), blog);
-        }
+        Blog b =  blogService.saveBlog(blog);
+
+        //  更新时间- ---- 也可以在blogServiceIpml
+        //if (blog.getId() == null) {
+        //b =  blogService.saveBlog(blog);
+        //} else {
+        //    b = blogService.updateBlog(blog.getId(), blog);
+        //}
         if (b == null) {
             attributes.addFlashAttribute("message", "操作失败");
         } else {

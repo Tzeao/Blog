@@ -29,23 +29,27 @@
 <!--中间内容-->
 <div class="m-container-small m-padded-tb-large">
       <div class="ui container">
-            <form action="#" method="post" class="ui stackable segment form">
+            <div  class="ui stackable segment form">
                   <input type="hidden" name="page">
                   <div class="inline fields">
-                        <label class="seven wide field">
+                        <label class="five wide field">
                               <input type="text" name="title" placeholder="标题">
                         </label>
-                        <label class="field">
-                              <div class="ui selection dropdown">
-                                    <input type="hidden" name="typeId">
-                                    <i class="dropdown icon"></i>
-                                    <div class="default text">分类</div>
-                                    <div class="menu">
-                                          <div th:each="type:${types}" class="item" th:data-value="${type.id}" th:text="${type.name}">错误日志</div>
-<!--                                          <div class="item" data-value="2">开发者手册</div>-->
+                        <div class="field">
+                              <div class="ui labeled action input">
+                                    <div class="ui type selection dropdown">
+                                          <input type="hidden" name="typeId">
+                                          <i class="dropdown icon"></i>
+                                          <div class="default text">分类</div>
+                                          <div class="menu">
+                                                <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}">分类</div>
+                                          </div>
                                     </div>
+                                    <button id="clear-btn" class="ui compact button">重置</button>
                               </div>
-                        </label>
+
+                        </div>
+
                         <div class="three wide field">
                               <div class="ui checkbox">
                                     <input type="checkbox" id="recommend" name="recommend">
@@ -53,10 +57,12 @@
                               </div>
                         </div>
                         <div class="field">
-                              <button type="button" id="search-btn" class="ui teal basic button"><i class="search icon"></i>查询</button>
+                              <button type="button" id="search-btn" class="ui teal basic button"><i
+                                      class="search icon"></i>查询
+                              </button>
                         </div>
                   </div>
-            </form>
+            </div>
             <div id="table-container">
                   <table th:fragment="blogList" class="ui unstackable table celled  center aligned">
                         <thead>
@@ -65,6 +71,7 @@
                               <th>标题</th>
                               <th>类型</th>
                               <th>推荐</th>
+                              <th>状态</th>
                               <th>更新时间</th>
                               <th style="width: 150px; margin-left: 5px!important;">操作</th>
                         </tr>
@@ -75,10 +82,13 @@
                               <td th:text="${blog.title}">学习</td>
                               <td th:text="${blog.type.name}">学习</td>
                               <td th:text="${blog.recommend}?'是':'否'">是</td>
-                              <td th:text="${blog.updateTime}">2021------</td>
+                              <td th:text="${blog.published}?'发布':'草稿'">是</td>
+                              <td th:text="${blog.updateTime}">2017-10-02 09:45</td>
                               <td>
-                                    <a th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui green mini basic button">编辑</a>
-                                    <a th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui red mini basic button">删除</a>
+                                    <a th:href="@{/admin/blogs/{id}/input(id=${blog.id})}"
+                                       class="ui green mini basic button">编辑</a>
+                                    <a th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}"
+                                       class="ui red mini basic button">删除</a>
                               </td>
                         </tr>
                         </tbody>
@@ -100,6 +110,11 @@
                         </tr>
                         </tfoot>
                   </table>
+                  <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                        <i class="close icon"></i>
+                        <div class="header">提示：</div>
+                        <p th:text="${message}">...</p>
+                  </div>
             </div>
 
       </div>
@@ -127,25 +142,40 @@
      $('.ui.dropdown').dropdown();
 
      // 给 name = page 赋值
-     function page(obj){
+     function page(obj) {
           $("[name='page']").val($(obj).data('page'));
           loaddata();
      }
+
      // 查询
      $("#search-btn").click(function () {
           $("[name='page']").val(0);
           loaddata();
      });
+
+
+     $('#clear-btn')
+          .on('click', function () {
+               $('.ui.type.dropdown')
+                    .dropdown('clear')
+               ;
+          })
+     ;
+
      //提交表单
-     function loaddata(){
-          $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
-               title : $("[name='title']").val(),
-               typeId : $("[name='typeId']").val(),
-               recommend : $("[name='recommend']").prop('checked'),
-               page : $("[name='page']").val()
+     function loaddata() {
+          $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search", {
+               title: $("[name='title']").val(),
+               typeId: $("[name='typeId']").val(),
+               recommend: $("[name='recommend']").prop('checked'),
+               page: $("[name='page']").val()
           });
      }
 
+     // 叉号初始化
+     $('.message .close').on('click', function () {
+          $(this).closest('.message').transition('fade');
+     })
 </script>
 </body>
 </html>
