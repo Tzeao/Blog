@@ -4,7 +4,9 @@ import com.tzeao.entity.Blog;
 import com.tzeao.entity.Type;
 import com.tzeao.error.NotFoundException;
 import com.tzeao.mapper.BlogMapper;
+import com.tzeao.utils.MyBeanUtils;
 import com.tzeao.vo.BlogQuery;
+import org.apache.catalina.mbeans.MBeanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +19,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.swing.plaf.metal.MetalButtonUI;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -77,7 +80,8 @@ public class BlogServiceImpl implements BlogService {
         if (blog == null) {
             throw new NotFoundException("没有找到你需要的博客");
         }
-        BeanUtils.copyProperties(blog, byId);
+        BeanUtils.copyProperties(blog, byId, MyBeanUtils.getNullPropertyNames(blog));
+        blog.setUpdateTime(new Date());
         return blogMapper.save(byId);
     }
 
