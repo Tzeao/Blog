@@ -12,5 +12,5 @@ public interface CommendService {
 
     List<Comment> listCommendByBlogId(Long id);
 
-    Comment saveCommend(Comment comment);
+    void saveCommend(Comment comment);
 }

@@ -565,7 +565,7 @@ h5,h6{font-size:1em;}
                   </div>
             </div>
             <!--        留言区域-->
-            <div  class="ui bottom attached segment">
+            <div class="ui bottom attached segment">
                   <div id="comment-container" class="ui teal segment">
                         <div th:fragment="commendList">
                               <div class="ui threaded comments" style="max-width: 100%">
@@ -581,10 +581,34 @@ h5,h6{font-size:1em;}
                                                 </div>
                                                 <div class="text" th:text="${commend.content}">太赞了！</div>
                                                 <div class="actions">
-                                                      <a class="reply" data-commendid="1" th:attr="data-commendid=${commend.id},data-commendusername=${commend.nickname}" data-commendusername="Math"  onclick="reply(this)">回复</a>
+                                                      <a class="reply" data-commendid="1"
+                                                         th:attr="data-commendid=${commend.id},data-commendusername=${commend.nickname}"
+                                                         data-commendusername="Math" onclick="reply(this)">回复</a>
+                                                </div>
+                                          </div>
+                                          <div class="ui comments" th:if="${#arrays.length(commend.replyComment)}">
+                                                <div class="comment" th:each="reply:${commend.replyComment}">
+                                                      <a class="avatar">
+                                                            <img th:src="@{/image/req.png}" src="../static/image/req.png" alt="#">
+                                                      </a>
+                                                      <div class="content">
+                                                            <a class="author" >
+                                                                  <span th:text="${reply.nickname}">Matt</span><span th:text="|@ ${reply.parentComment.nickname}|" style="color:#00B5AD !important;">@</span>
+                                                            </a>
+                                                            <div class="metadata">
+                                                                  <span class="date" th:text="${#dates.format(reply.createTime)}">今天下午 5:42</span>
+                                                            </div>
+                                                            <div class="text" th:text="${reply.content}">太赞了！</div>
+                                                            <div class="actions">
+                                                                  <a class="reply" data-commendid="1"
+                                                                     th:attr="data-commendid=${reply.id},data-commendusername=${reply.nickname}"
+                                                                     data-commendusername="Math" onclick="reply(this)">回复</a>
+                                                            </div>
+                                                      </div>
                                                 </div>
                                           </div>
                                     </div>
+                                    <!--/*-->
                                     <div class="comment">
                                           <a class="avatar">
                                                 <img th:src="@{/image/req.png}" src="../static/image/req.png" alt="#">
@@ -634,6 +658,7 @@ h5,h6{font-size:1em;}
                                                 </div>
                                           </div>
                                     </div>
+                                    <!--*/-->
                               </div>
                         </div>
 
@@ -658,7 +683,9 @@ h5,h6{font-size:1em;}
                                     </div>
                               </div>
                               <div class="field m-mobile-wide m-margin-bottom-mini">
-                                    <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                                    <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i
+                                            class="edit icon"></i>发布
+                                    </button>
                               </div>
                         </div>
                   </div>
@@ -728,6 +755,11 @@ h5,h6{font-size:1em;}
           // For headings inside relative or absolute positioned containers within content.
           hasInnerContainers: true,
      });
+
+     $(function () {
+          $("#comment-container").load(/*[[@{/commends/{id}(id=${blog.id})}]]*/"comments/2");
+     });
+
 
      //弹出目录
      $('.toc').popup({
@@ -813,17 +845,19 @@ h5,h6{font-size:1em;}
                console.log('校验失败');
           }
      });
+
      function postData() {
-          $("#comment-container").load(/*[[@{/commends}]]*/"",{
-               "parentComment.id" : $("[name='parentComment.id']").val(),
-               "blog.id" : $("[name='blog.id']").val(),
+          $("#comment-container").load(/*[[@{/commends}]]*/"", {
+               "parentComment.id": $("[name='parentComment.id']").val(),
+               "blog.id": $("[name='blog.id']").val(),
                "nickname": $("[name='nickname']").val(),
-               "email"   : $("[name='email']").val(),
-               "content" : $("[name='content']").val()
-          },function (responseTxt, statusTxt, xhr) {
-               $(window).scrollTo($('#goto'),500);
+               "email": $("[name='email']").val(),
+               "content": $("[name='content']").val()
+          }, function (responseTxt, statusTxt, xhr) {
+               $(window).scrollTo($('#goto'), 500);
                clearContent();
           });
+
           function clearContent() {
                $("[name='nickname']").val('');
                $("[name='email']").val('');
@@ -833,12 +867,13 @@ h5,h6{font-size:1em;}
           }
 
      }
+
      function reply(obj) {
           var commentId = $(obj).data('commendid');
           var commentNickname = $(obj).data('commendusername');
-          $("[name='content']").attr("placeholder", "@"+commentNickname).focus();
+          $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
           $("[name='parentComment.id']").val(commentId);
-          $(window).scrollTo($('#comment-form'),500);
+          $(window).scrollTo($('#comment-form'), 500);
      }
 
 </script>

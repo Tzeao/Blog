@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface CommendMapper extends JpaRepository<Comment,Long> {
 
-    List<Comment> findByBlogId(Long id, Sort sort);
+    List<Comment> findByBlogIdAndParentCommentNull(Long id, Sort sort);
 }

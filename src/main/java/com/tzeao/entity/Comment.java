@@ -3,6 +3,7 @@ package com.tzeao.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -125,4 +126,6 @@ public class Comment {
                 ", createTime=" + createTime +
                 '}';
     }
+
+
 }
