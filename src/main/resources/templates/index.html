@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="right aligned column ">
                                           <a href="#" th:href="@{/(page=${page.number}+1)}"
-                                             class="ui mini teal button basic">上一页</a>
+                                             class="ui mini teal button basic">下一页</a>
                                     </div>
                               </div>
                         </div>
@@ -158,9 +158,9 @@
                               <div class="ui secondary segment">
                                     <i class="bookmark icon"></i>最新推荐
                               </div>
-                              <div class="ui segment" th:each="blog:${recommend}">
-                                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank"
-                                       class="m-black m-text-thin" th:text="${blog.title}">用户故事</a>
+                              <div class="ui segment" th:each="blogss:${recommend}">
+                                    <a href="#" th:href="@{/blog/{id}(id=${blogss.id})}" target="_blank"
+                                       class="m-black m-text-thin" th:text="${blogss.title}">用户故事</a>
                               </div>
                         </div>
                         <!--                二维码-->

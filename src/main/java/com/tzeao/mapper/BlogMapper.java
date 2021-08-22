@@ -1,6 +1,7 @@
 package com.tzeao.mapper;
 
 import com.tzeao.entity.Blog;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -15,4 +16,6 @@ import java.util.List;
 public interface BlogMapper extends JpaRepository<Blog,Long>, JpaSpecificationExecutor<Blog> {
     @Query("select b from Blog b where b.recommend = true ")
     List<Blog> findTopBy(Pageable pageable);
+    @Query("select b from Blog b where b.title like ?1 or b.description like ?1")
+    Page<Blog> findTopBy(String query, Pageable pageable);
 }
