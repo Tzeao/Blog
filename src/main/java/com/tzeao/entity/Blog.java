@@ -1,5 +1,9 @@
 package com.tzeao.entity;
 
+
+
+
+
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
@@ -34,11 +38,14 @@ public class Blog {
     @GeneratedValue
     private Long id;
     private String title;
+
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
     private String content;
-    @URL(message = "请输入正确的URL")
+    //@URL(message = "请输入正确的URL")
     private String firstPicture;
     private String flag;
-    private String views;
+    private int views;
     private boolean appreciation;
     private boolean shareStatement;
     private boolean commentabled;
@@ -57,8 +64,17 @@ public class Blog {
     private User user;
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
-
+    @Transient
+    private String tagIds;
     public Blog() {
+    }
+
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
     }
 
     public List<Comment> getComments() {
@@ -134,11 +150,11 @@ public class Blog {
         this.flag = flag;
     }
 
-    public String getViews() {
+    public int getViews() {
         return views;
     }
 
-    public void setViews(String views) {
+    public void setViews(int views) {
         this.views = views;
     }
 
@@ -216,4 +232,5 @@ public class Blog {
                 ", updateTime=" + updateTime +
                 '}';
     }
+
 }

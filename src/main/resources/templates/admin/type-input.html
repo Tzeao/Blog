@@ -71,7 +71,10 @@
      });
      //    初始化下拉组件
      $('.ui.dropdown').dropdown();
-
+     // 叉号初始化
+     $('.message .close').on('click', function () {
+          $(this).closest('.message').transition('fade');
+     })
      $('.ui.form').form({
           fields : {
                title : {

@@ -51,9 +51,14 @@ public class TypeServiceImpl implements TypeService {
     }
 
 
+    @Transactional(rollbackFor = {Exception.class})
     @Override
     public void deleteType(Long id) {
-        typeMapper.deleteById(id);
+        try {
+            typeMapper.deleteById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

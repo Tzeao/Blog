@@ -41,6 +41,7 @@ public class ShiroConfig {
         linkedMap.put("/admin/types", "authc");
         linkedMap.put("/admin/tags", "authc");
         linkedMap.put("/admin/blogs", "authc");
+        linkedMap.put("/admin/input", "authc");
         linkedMap.put("/admin/blogs/**", "authc");
         linkedMap.put("/admin/types/**", "authc");
         linkedMap.put("/admin/tags/**", "authc");

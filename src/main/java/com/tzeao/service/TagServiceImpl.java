@@ -10,6 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author 君子慎独
  * @create 2021/8/21 0021 16:30
@@ -48,6 +51,28 @@ public class TagServiceImpl implements TagService {
         return tagMapper.save(t);
     }
 
+    @Override
+    public List<Tags> listTags() {
+        return tagMapper.findAll();
+    }
+
+    @Override
+    public List<Tags> listTags(String ids) {
+        return tagMapper.findAllById(convertToList(ids));
+    }
+
+    private List<Long> convertToList(String ids) {
+        List<Long> list = new ArrayList<>();
+        if (!"".equals(ids) && ids != null) {
+            String[] idarray = ids.split(",");
+            for (int i = 0; i < idarray.length; i++) {
+                list.add(new Long(idarray[i]));
+            }
+        }
+        return list;
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
     @Override
     public void deleteTags(Long id) {
         tagMapper.deleteById(id);

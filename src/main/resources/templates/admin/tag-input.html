@@ -71,14 +71,17 @@
      });
      //    初始化下拉组件
      $('.ui.dropdown').dropdown();
-
+     // 叉号初始化
+     $('.message .close').on('click', function () {
+          $(this).closest('.message').transition('fade');
+     })
      $('.ui.form').form({
           fields : {
                title : {
                     identifier: 'name',
                     rules: [{
                          type : 'empty',
-                         prompt: '请输入分类名称'
+                         prompt: '请输入标签名称'
                     }]
                }
           }
