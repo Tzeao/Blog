@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Author 君子慎独
  * @create 2021/8/21 0021 0:19
  */
-public interface UserMapper extends JpaRepository<User,Long> {
+public interface UserMapper extends JpaRepository<User, Long> {
 
     User findAllByUsername(String username);
 }

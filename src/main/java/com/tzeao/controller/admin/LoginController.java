@@ -42,7 +42,7 @@ public class LoginController {
             subject.login(token);
             User user = userService.checkUser(username);
             user.setPassword(null);
-            session.setAttribute("user",user);
+            session.setAttribute("user", user);
             return "admin/index";
         } catch (UnknownAccountException e) {//用户不存在
 

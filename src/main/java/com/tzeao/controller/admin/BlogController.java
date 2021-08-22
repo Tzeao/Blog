@@ -23,7 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -89,11 +88,11 @@ public class BlogController {
         blog.setUser((User) session.getAttribute("user"));
         blog.setType(typeService.getType(blog.getType().getId()));
         blog.setTags(tagService.listTags(blog.getTagIds()));
-        Blog b ;
+        Blog b;
 
 
         if (blog.getId() == null) {
-        b =  blogService.saveBlog(blog);
+            b = blogService.saveBlog(blog);
         } else {
             b = blogService.updateBlog(blog.getId(), blog);
         }

@@ -33,7 +33,8 @@
             </div>
             <!--        图片区域-->
             <div class="ui attached segment">
-                  <img src="https://unsplash.it/800/450?image=1000" alt="详情图片" class="ui fluid rounded image"  th:src="@{${blog.firstPicture}}" >
+                  <img src="https://unsplash.it/800/450?image=1000" alt="详情图片" class="ui fluid rounded image"
+                       th:src="@{${blog.firstPicture}}">
             </div>
             <!--        内容区域-->
             <div class="ui attached padded segment">
@@ -45,8 +46,9 @@
                   </h2>
                   <br>
                   <!--            文章内容-->
-                  <div id="content" class="typo typo-selection js-toc-content m-margin-tb-large" th:utext="${blog.content}">
-                        <h1 >中文网页重设与排版：<i class="serif">Typo.css</i></h1><br/>
+                  <div id="content" class="typo typo-selection js-toc-content m-margin-tb-large"
+                       th:utext="${blog.content}">
+                        <h1>中文网页重设与排版：<i class="serif">Typo.css</i></h1><br/>
 
                         <h2 id="tagline" class="serif">一致化浏览器排版效果，构建最适合中文阅读的网页排版</h2>
                         <pre><code class="language-css">p{color:red}</code></pre>
@@ -512,7 +514,9 @@ h5,h6{font-size:1em;}
 
                   <!--            标签-->
                   <div style="margin-top: 2em !important;">
-                        <div class="ui basic teal left pointing label" th:each="tag:${blog.tags}" th:text="${tag.name}">方法论</div>
+                        <div class="ui basic teal left pointing label" th:each="tag:${blog.tags}" th:text="${tag.name}">
+                              方法论
+                        </div>
                   </div>
                   <!--            打赏-->
                   <div class="ui center aligned basic segment">
@@ -529,7 +533,8 @@ h5,h6{font-size:1em;}
                                           <div>微信</div>
                                     </div>
                                     <div class="image">
-                                          <img src="../static/image/zfbshou.png" th:src="@{/image/zfbshou.png}" alt="支付宝支付"
+                                          <img src="../static/image/zfbshou.png" th:src="@{/image/zfbshou.png}"
+                                               alt="支付宝支付"
                                                class="ui rounded bordered image"
                                                style="width: 120px">
                                           <div>支付宝</div>
@@ -543,8 +548,11 @@ h5,h6{font-size:1em;}
                   <div class="ui middle aligned grid">
                         <div class="eleven wide column">
                               <ui class="list">
-                                    <li>作者：<span th:text="${blog.user.username}">Tzeao</span><a href="#" th:href="@{/about}">(联系作者)</a></li>
-                                    <li>发表时间：<span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd HH:mm')}">2021-08-16 18:45</span></li>
+                                    <li>作者：<span th:text="${blog.user.username}">Tzeao</span><a href="#"
+                                                                                                th:href="@{/about}">(联系作者)</a>
+                                    </li>
+                                    <li>发表时间：<span th:text="${#dates.format(blog.createTime,'yyyy-MM-dd HH:mm')}">2021-08-16 18:45</span>
+                                    </li>
                                     <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
                                     <li>公众号转载：请在文末添加作者公众号二维码</li>
                               </ui>
@@ -628,6 +636,8 @@ h5,h6{font-size:1em;}
                         </div>
                   </div>
                   <div class="ui form">
+                        <input type="hidden" name="blog.id" th:value="${blog.id}">
+                        <input type="hidden" name="parentComment.id" value="-1">
                         <div class="field">
                               <textarea name="content" placeholder="请输入评论信息……"></textarea>
                         </div>
@@ -736,12 +746,12 @@ h5,h6{font-size:1em;}
      var serurl = "127.0.0.1:8080";
      var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
      var qrcode = new QRCode("qrcode", {
-          text: serurl+url,
+          text: serurl + url,
           width: 110,
           height: 110,
-          colorDark : "#000000",
-          colorLight : "#ffffff",
-          correctLevel : QRCode.CorrectLevel.H
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
      });
 
      //    平滑滚动
@@ -761,7 +771,35 @@ h5,h6{font-size:1em;}
                }
                console.log('Scrolled to waypoint!' + direction)
           }
+
      })
+     //评论表单验证
+     $('.ui.form').form({
+          fields: {
+               title: {
+                    identifier: 'content',
+                    rules: [{
+                         type: 'empty',
+                         prompt: '请输入评论内容'
+                    }
+                    ]
+               },
+               content: {
+                    identifier: 'nickname',
+                    rules: [{
+                         type: 'empty',
+                         prompt: '请输入你的大名'
+                    }]
+               },
+               type: {
+                    identifier: 'email',
+                    rules: [{
+                         type: 'email',
+                         prompt: '请填写正确的邮箱地址'
+                    }]
+               }
+          }
+     });
 </script>
 </body>
 </html>

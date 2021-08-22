@@ -1,11 +1,6 @@
 package com.tzeao.entity;
 
 
-
-
-
-import org.hibernate.validator.constraints.URL;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -68,6 +63,7 @@ public class Blog {
     private String tagIds;
 
     private String description;
+
     public Blog() {
     }
 
@@ -223,10 +219,12 @@ public class Blog {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-        public void init() {
+
+    public void init() {
         this.tagIds = tagsToIds(this.getTags());
     }
-        private String tagsToIds(List<Tags> tags) {
+
+    private String tagsToIds(List<Tags> tags) {
         if (!tags.isEmpty()) {
             StringBuffer ids = new StringBuffer();
             boolean flag = false;

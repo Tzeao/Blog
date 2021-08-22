@@ -18,9 +18,13 @@ public interface TagService {
     Page<Tags> listTag(Pageable pageable);
 
     Tags updateTag(Long id, Tags tags);
+
     List<Tags> listTagsTop(Integer size);
+
     List<Tags> listTags();
+
     List<Tags> listTags(String ids);
+
     void deleteTags(Long id);
 
     Tags findByName(String name);

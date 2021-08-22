@@ -54,6 +54,10 @@ public class Comment {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public List<Comment> getReplyComment() {
         return replyComment;
     }
@@ -68,10 +72,6 @@ public class Comment {
 
     public void setParentComment(Comment parentComment) {
         this.parentComment = parentComment;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNickname() {

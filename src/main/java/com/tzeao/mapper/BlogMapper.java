@@ -13,9 +13,10 @@ import java.util.List;
  * @Author 君子慎独
  * @create 2021/8/21 0021 22:55
  */
-public interface BlogMapper extends JpaRepository<Blog,Long>, JpaSpecificationExecutor<Blog> {
+public interface BlogMapper extends JpaRepository<Blog, Long>, JpaSpecificationExecutor<Blog> {
     @Query("select b from Blog b where b.recommend = true ")
     List<Blog> findTopBy(Pageable pageable);
+
     @Query("select b from Blog b where b.title like ?1 or b.description like ?1")
     Page<Blog> findTopBy(String query, Pageable pageable);
 }
