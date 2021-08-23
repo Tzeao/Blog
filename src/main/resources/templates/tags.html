@@ -27,7 +27,9 @@
             </div>
             <!--    标签-->
             <div class="ui attached segment m-padded-tb-large">
-                  <a href="#"  th:href="@{/tag/{id}(id=${tag.id})}" class="ui basic left pointing large label m-margin-tb-large" th:classappend="${tag.id==activeTagId}?'teal'" th:each="tag : ${tags}"><span th:text="${tag.name}">相对论</span>
+                  <a href="#" th:href="@{/tag/{id}(id=${tag.id})}"
+                     class="ui basic left pointing large label m-margin-tb-large"
+                     th:classappend="${tag.id==activeTagId}?'teal'" th:each="tag : ${tags}"><span th:text="${tag.name}">相对论</span>
                         <div class="detail" th:text="${#arrays.length(tag.blogs)}">21</div>
                   </a>
             </div>
@@ -77,8 +79,10 @@
                                           </div>
                                           <div class="right aligned five wide column">
                                                 <a href="#"
-                                                   class="ui  basic label m-padded-mini m-text-thin" th:classappend="${tag.id==activeTagId}?'teal'"
-                                                  th:href="@{/tag/{id}(id=${tag.id})}" th:each="tag:${blog.tags}" th:text="${tag.name}" >
+                                                   class="ui  basic label m-padded-mini m-text-thin"
+                                                   th:classappend="${tag.id==activeTagId}?'teal'"
+                                                   th:href="@{/tag/{id}(id=${tag.id})}" th:each="tag:${blog.tags}"
+                                                   th:text="${tag.name}">
                                                       Java
                                                 </a>
                                           </div>

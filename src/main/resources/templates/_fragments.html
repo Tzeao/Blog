@@ -7,7 +7,8 @@
       <!--    设置移动端浏览的效果-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title th:replace="${title}">博客详情</title>
-      <link  rel="icon" href="https://pic.netbian.com/uploads/allimg/210423/224716-1619189236e4d9.jpg" type="image/x-ico" sizes="16x16">
+      <link rel="icon" href="https://pic.netbian.com/uploads/allimg/210423/224716-1619189236e4d9.jpg" type="image/x-ico"
+            sizes="16x16">
       <!--    引入semantic-ui css样式-->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
       <!--    引入文章排版css-->
@@ -34,9 +35,11 @@
                   <!--            编写小组件和图标-->
                   <a href="#" th:href="@{/}" class="item_m item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i
                           class="home icon"></i>首页</a>
-                  <a href="#" th:href="@{/type/-1}" class="item_m item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i
+                  <a href="#" th:href="@{/type/-1}" class="item_m item m-mobile-hide"
+                     th:classappend="${n==2} ? 'active'"><i
                           class="idea icon"></i>分类</a>
-                  <a href="#" th:href="@{/tag/-1}" class="item_m item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i
+                  <a href="#" th:href="@{/tag/-1}" class="item_m item m-mobile-hide"
+                     th:classappend="${n==3} ? 'active'"><i
                           class="tags icon"></i>标签</a>
                   <a href="#" th:href="@{/ac}" class="item_m item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i
                           class="clone icon"></i>归档</a>
@@ -45,8 +48,9 @@
                   <!--            搜索栏-->
                   <div class="right item m-mobile-hide">
                         <form action="#" name="search" th:action="@{/search}" target="_blank" method="post">
-                              <div class="ui icon transparent input" >
-                                    <input th:value="${query}" type="text" name="query" style="color: aliceblue" placeholder="Search...">
+                              <div class="ui icon transparent input">
+                                    <input th:value="${query}" type="text" name="query" style="color: aliceblue"
+                                           placeholder="Search...">
                                     <i onclick="document.forms['search'].submit()" class="search link red icon"></i>
                               </div>
                         </form>
@@ -84,13 +88,14 @@
                         <h4 class="ui inverted header m-opacity-mini">联系我</h4>
                         <div class="ui link inverted list">
                               <a href="mailto: 773238750@qq.com" class="item">Email: 773238750@qq.com</a>
-                              <a href="https://wpa.qq.com/msgrd?v=3&uin=773238750&site=qq&menu=yes" class="item">QQ: 773238750</a>
+                              <a href="https://wpa.qq.com/msgrd?v=3&uin=773238750&site=qq&menu=yes" class="item">QQ:
+                                    773238750</a>
                         </div>
                   </div>
                   <div class="seven wide column">
                         <h4 class="ui inverted header m-opacity-mini">Mind</h4>
                         <p class="m-text-thin m-text-spaced m-opacity-mini">
-                              世上只有一种英雄主义，就是在认清生活真相之后依然热爱生活。       </div>
+                              世上只有一种英雄主义，就是在认清生活真相之后依然热爱生活。</div>
 
             </div>
             <!--    画一条线 写备案号-->

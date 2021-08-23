@@ -89,7 +89,7 @@
                                                 <a href="#" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}">
                                                       <img src="https://unsplash.it/800/450?image=1000"
                                                            alt="博客标题图" class="ui rounded image"
-                                                           th:src="@{${blog.firstPicture}}" >
+                                                           th:src="@{${blog.firstPicture}}">
                                                 </a>
                                           </div>
                                     </div>
@@ -119,13 +119,15 @@
                                                 <i class="idea icon"></i>分类
                                           </div>
                                           <div class="right aligned column">
-                                                <a href="#" th:href="@{/type/-1}" target="_blank">more <i class="angle double right icon"></i></a>
+                                                <a href="#" th:href="@{/type/-1}" target="_blank">more <i
+                                                        class="angle double right icon"></i></a>
                                           </div>
                                     </div>
                               </div>
                               <div class="ui teal segment">
                                     <div class="ui fluid vertical menu">
-                                          <a href="#" th:href="@{/type/{id}(id=${type.id})}" class="item" th:each="type:${types}"><span th:text="${type.name}">学习日志</span>
+                                          <a href="#" th:href="@{/type/{id}(id=${type.id})}" class="item"
+                                             th:each="type:${types}"><span th:text="${type.name}">学习日志</span>
                                                 <div class="ui teal basic left pointing label"
                                                      th:text="${#arrays.length(type.blogs)}">12
                                                 </div>
@@ -141,14 +143,16 @@
                                                 <i class="tags icon"></i>标签
                                           </div>
                                           <div class="right aligned column">
-                                                <a href="#" target="_blank" th:href="@{/tag/-1}">more <i class="angle double right icon"></i></a>
+                                                <a href="#" target="_blank" th:href="@{/tag/-1}">more <i
+                                                        class="angle double right icon"></i></a>
                                           </div>
                                     </div>
                               </div>
                               <div class="ui teal segment">
                                     <a href="#" target="_blank"
                                        class="ui teal basic left pointing label m-margin-tb-large"
-                                       th:each="tag:${tags}" th:href="@{/tag/{id}(id=${tag.id})}"><span th:text="${tag.name}" >相对论</span>
+                                       th:each="tag:${tags}" th:href="@{/tag/{id}(id=${tag.id})}"><span
+                                            th:text="${tag.name}">相对论</span>
                                           <div class="detail" th:text="${#arrays.length(tag.blogs)}">21</div>
                                     </a>
                               </div>
