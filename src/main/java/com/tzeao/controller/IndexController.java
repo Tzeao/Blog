@@ -4,8 +4,6 @@ package com.tzeao.controller;
 import com.tzeao.service.BlogService;
 import com.tzeao.service.TagService;
 import com.tzeao.service.TypeService;
-import org.apache.shiro.crypto.SecureRandomNumberGenerator;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -29,16 +27,6 @@ public class IndexController {
     private TypeService typeService;
     @Autowired
     private TagService tagService;
-
-    public static void main(String[] args) {
-        //盐
-        String Salt = new SecureRandomNumberGenerator().nextBytes().toHex();
-        //加密
-        SimpleHash simpleHash = new SimpleHash("md5", "111", Salt, 1);
-        String NewPassword = simpleHash.toString();
-        System.out.println(NewPassword);
-        System.out.println("aaa" + Salt);
-    }
 
     @GetMapping("/")
     public String index(@PageableDefault(size = 5, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {

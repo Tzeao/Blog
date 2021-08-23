@@ -11,4 +11,6 @@ public interface UserService {
      * 检查用户登录
      */
     User checkUser(String username);
+
+    User saveUser(User user);
 }

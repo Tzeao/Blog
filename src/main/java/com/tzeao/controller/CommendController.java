@@ -41,9 +41,9 @@ public class CommendController {
         Long id = comment.getBlog().getId();
         comment.setBlog(blogService.getBolg(id));
         User user = (User) session.getAttribute("user");
-
+        String avatar = user.getAvatar();
         if (user != null) {
-            comment.setAvatar(user.getAvatar());
+            comment.setAvatar(avatar);
             comment.setAdminComment(true);
         } else {
             comment.setAvatar(this.avatar);
