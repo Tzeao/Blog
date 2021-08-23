@@ -51,7 +51,8 @@ public class BlogServiceImpl implements BlogService {
         String content = b.getContent();
         b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
 
-        //blogRepository.updateViews(id);
+        int i = blogMapper.updateViews(id);
+
         return b;
     }
 

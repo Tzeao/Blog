@@ -1,6 +1,7 @@
 package com.tzeao.controller;
 
 import com.tzeao.entity.Comment;
+import com.tzeao.entity.User;
 import com.tzeao.service.BlogService;
 import com.tzeao.service.CommendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @Author 君子慎独
@@ -34,10 +37,19 @@ public class CommendController {
     }
 
     @PostMapping("/commends")
-    public String post(Comment comment) {
+    public String post(Comment comment, HttpSession session) {
         Long id = comment.getBlog().getId();
         comment.setBlog(blogService.getBolg(id));
-        comment.setAvatar(avatar);
+        User user = (User) session.getAttribute("user");
+        if (user!=null){
+           comment.setAvatar(user.getAvatar());
+           comment.setAdminComment(true);
+           //comment.setNickname(user.getUsername());
+        }else {
+            comment.setAvatar(avatar);
+            comment.setAdminComment(false);
+        }
+
         commendService.saveCommend(comment);
         return "redirect:/commends/" + comment.getBlog().getId();
     }

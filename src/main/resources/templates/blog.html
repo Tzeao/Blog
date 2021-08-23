@@ -575,7 +575,10 @@ h5,h6{font-size:1em;}
                                                 <img th:src="@{/image/req.png}" src="../static/image/req.png" alt="#">
                                           </a>
                                           <div class="content">
-                                                <a class="author" th:text="${commend.nickname}">Matt</a>
+                                                <a class="author">
+                                                      <span th:text="${commend.nickname}">Matt</span>
+                                                      <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${commend.adminComment}">博主</div>
+                                                </a>
                                                 <div class="metadata">
                                                       <span class="date" th:text="${#dates.format(commend.createTime)}">今天下午 5:42</span>
                                                 </div>
@@ -593,7 +596,10 @@ h5,h6{font-size:1em;}
                                                       </a>
                                                       <div class="content">
                                                             <a class="author" >
-                                                                  <span th:text="${reply.nickname}">Matt</span><span th:text="|@ ${reply.parentComment.nickname}|" style="color:#00B5AD !important;">@</span>
+                                                                  <span th:text="${reply.nickname}">Matt</span>
+
+                                                                  <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${reply.adminComment}">博主</div>
+                                                                  <span th:text="|@ ${reply.parentComment.nickname}|" style="color:#00B5AD !important;">@</span>
                                                             </a>
                                                             <div class="metadata">
                                                                   <span class="date" th:text="${#dates.format(reply.createTime)}">今天下午 5:42</span>
@@ -673,13 +679,13 @@ h5,h6{font-size:1em;}
                               <div class="field m-mobile-wide m-margin-bottom-mini">
                                     <div class="ui left icon input">
                                           <i class="user icon"></i>
-                                          <input type="text" name="nickname" placeholder="姓名">
+                                          <input type="text" name="nickname" placeholder="姓名" th:value="${session.user}!= null ? ${session.user.username}">
                                     </div>
                               </div>
                               <div class="field m-mobile-wide m-margin-bottom-mini">
                                     <div class="ui left icon input">
                                           <i class="mail icon"></i>
-                                          <input type="email" name="email" placeholder="邮箱">
+                                          <input type="email" name="email" placeholder="邮箱" th:value="${session.user}!= null ? ${session.user.email}">
                                     </div>
                               </div>
                               <div class="field m-mobile-wide m-margin-bottom-mini">

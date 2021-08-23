@@ -3,7 +3,6 @@ package com.tzeao.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +39,17 @@ public class Comment {
     @ManyToOne
     private Comment parentComment;
 
+    private boolean adminComment;
+
     public Comment() {
+    }
+
+    public boolean isAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
     }
 
     public Blog getBlog() {
@@ -124,8 +133,10 @@ public class Comment {
                 ", content='" + content + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", createTime=" + createTime +
+                ", blog=" + blog +
+                ", replyComment=" + replyComment +
+                ", parentComment=" + parentComment +
+                ", adminComment=" + adminComment +
                 '}';
     }
-
-
 }

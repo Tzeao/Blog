@@ -23,7 +23,7 @@ public class CommendServiceImpl implements CommendService {
 
     @Override
     public List<Comment> listCommendByBlogId(Long id) {
-        Sort by = Sort.by(Sort.Direction.DESC, "createTime");
+        Sort by = Sort.by(Sort.Direction.ASC, "createTime");
         List<Comment> comments = commendMapper.findByBlogIdAndParentCommentNull(id,by);
         return eachComment(comments);
     }
