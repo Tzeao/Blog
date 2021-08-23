@@ -14,7 +14,7 @@
 <!--导航 semantic-ui 使用这个可以直接引用，类似bootstrap-->
 <div th:replace="_fragments::nav(1)"></div>
 <!--中间内容-->
-<div class="m-container m-padded-tb-large">
+<div class="m-container m-padded-tb-large  animated fadeIn">
       <div class="ui container">
             <div class="ui stackable grid">
                   <!--        左边博客列表-->
@@ -101,11 +101,11 @@
                               <div class="ui middle aligned two column grid">
                                     <div class="column">
                                           <a href="#" th:href="@{/(page=${page.number}-1)}"
-                                             class="ui mini teal button basic">上一页</a>
+                                             class="ui mini teal button basic" th:unless="${page.first}">上一页</a>
                                     </div>
                                     <div class="right aligned column ">
                                           <a href="#" th:href="@{/(page=${page.number}+1)}"
-                                             class="ui mini teal button basic">下一页</a>
+                                             class="ui mini teal button basic" th:unless="${page.last}">下一页</a>
                                     </div>
                               </div>
                         </div>
@@ -119,13 +119,13 @@
                                                 <i class="idea icon"></i>分类
                                           </div>
                                           <div class="right aligned column">
-                                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                                <a href="#" th:href="@{/type/-1}" target="_blank">more <i class="angle double right icon"></i></a>
                                           </div>
                                     </div>
                               </div>
                               <div class="ui teal segment">
                                     <div class="ui fluid vertical menu">
-                                          <a href="#" class="item" th:each="type:${types}"><span th:text="${type.name}">学习日志</span>
+                                          <a href="#" th:href="@{/type/{id}(id=${type.id})}" class="item" th:each="type:${types}"><span th:text="${type.name}">学习日志</span>
                                                 <div class="ui teal basic left pointing label"
                                                      th:text="${#arrays.length(type.blogs)}">12
                                                 </div>
@@ -141,14 +141,14 @@
                                                 <i class="tags icon"></i>标签
                                           </div>
                                           <div class="right aligned column">
-                                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                                <a href="#" target="_blank" th:href="@{/tag/-1}">more <i class="angle double right icon"></i></a>
                                           </div>
                                     </div>
                               </div>
                               <div class="ui teal segment">
                                     <a href="#" target="_blank"
                                        class="ui teal basic left pointing label m-margin-tb-large"
-                                       th:each="tag:${tags}"><span th:text="${tag.name}">相对论</span>
+                                       th:each="tag:${tags}" th:href="@{/tag/{id}(id=${tag.id})}"><span th:text="${tag.name}" >相对论</span>
                                           <div class="detail" th:text="${#arrays.length(tag.blogs)}">21</div>
                                     </a>
                               </div>
