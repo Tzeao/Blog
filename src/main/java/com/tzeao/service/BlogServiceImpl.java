@@ -18,9 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author 君子慎独
@@ -87,9 +85,9 @@ public class BlogServiceImpl implements BlogService {
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 // 联表
                 Join<Object, Object> join = root.join("tags");
-                return cb.equal(join.get("id"),id);
+                return cb.equal(join.get("id"), id);
             }
-        },pageable);
+        }, pageable);
     }
 
     @Override
@@ -138,5 +136,21 @@ public class BlogServiceImpl implements BlogService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Map<String, List<Blog>> archivesBlog() {
+        List<String> years = blogMapper.findGroupYear();
+
+        Map<String, List<Blog>> map = new LinkedHashMap<>();
+        for (String year : years) {
+            map.put(year, blogMapper.findByYear(year));
+        }
+        return map;
+    }
+
+    @Override
+    public Long count() {
+        return blogMapper.count();
     }
 }
