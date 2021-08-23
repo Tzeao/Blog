@@ -90,13 +90,14 @@ public class BlogController {
         blog.setTags(tagService.listTags(blog.getTagIds()));
         Blog b;
 
-
+        if ("".equals(blog.getFlag())) {
+            blog.setFlag("原创");
+        }
         if (blog.getId() == null) {
             b = blogService.saveBlog(blog);
         } else {
             b = blogService.updateBlog(blog.getId(), blog);
         }
-
         if (b == null) {
             attributes.addFlashAttribute("message", "操作失败");
         } else {

@@ -41,15 +41,16 @@ public class CommendController {
         Long id = comment.getBlog().getId();
         comment.setBlog(blogService.getBolg(id));
         User user = (User) session.getAttribute("user");
-        if (user!=null){
-           comment.setAvatar(user.getAvatar());
-           comment.setAdminComment(true);
-           //comment.setNickname(user.getUsername());
-        }else {
-            comment.setAvatar(avatar);
+        String userAvatar = user.getAvatar();
+
+        if (user != null) {
+            comment.setAvatar(user.getAvatar());
+            comment.setAdminComment(true);
+            comment.setAvatar(userAvatar);
+        } else {
+            comment.setAvatar(this.avatar);
             comment.setAdminComment(false);
         }
-
         commendService.saveCommend(comment);
         return "redirect:/commends/" + comment.getBlog().getId();
     }
