@@ -29,8 +29,8 @@
                   <div class="right item_m m-mobile-hide menu">
                         <div class="ui dropdown item">
                               <div class="text">
-                                    <img src="https://unsplash.it/100/100?image=1006" alt="用户头像" class="ui avatar image">
-                                    Tzeao
+                                    <img th:src="${#session.getAttribute('user').avatar}" src="https://unsplash.it/100/100?image=1006" alt="用户头像" class="ui avatar image">
+                                    <span th:text="${#session.getAttribute('user').username}">Tzeao</span>
                               </div>
                               <i class="dropdown icon"></i>
                               <div class="menu">
