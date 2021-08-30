@@ -769,9 +769,9 @@ h5,h6{font-size:1em;}
           // Where to grab the headings to build the table of contents.
           contentSelector: '.js-toc-content',// 从那些内容来生成
           // Which headings to grab inside of the contentSelector element.
-          headingSelector: 'h1, h2, h3',
+          headingSelector: 'h1, h2',
           // For headings inside relative or absolute positioned containers within content.
-          hasInnerContainers: true,
+          // hasInnerContainers: true,
      });
 
      $(function () {
@@ -785,8 +785,6 @@ h5,h6{font-size:1em;}
           popup: $('.toc-container.popup'),
           //触发方法
           on: 'click',
-          //位置
-          position: 'left center'
      })
 
      //    弹出文章二维码

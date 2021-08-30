@@ -3,9 +3,9 @@ spring:
     mode: HTML
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useSSL=true&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://120.79.213.246:3306/blog?useSSL=true&useUnicode=true&characterEncoding=utf8
     username: root
-    password: 123456
+    password: Tzeao258012.
   jpa:
     #进行格式化
     properties:
@@ -22,4 +22,4 @@ logging:
   file:
     name: log/blog-pro
 server:
-  port: 8081
+  port: 8080
