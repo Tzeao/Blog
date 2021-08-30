@@ -597,7 +597,7 @@ h5,h6{font-size:1em;}
                                           <div class="ui comments" th:if="${#arrays.length(commend.replyComment)}">
                                                 <div class="comment" th:each="reply:${commend.replyComment}">
                                                       <a class="avatar">
-                                                            <img th:src="@{/image/req.png}"
+                                                            <img th:src="@{${reply.avatar}}"
                                                                  src="../static/image/req.png" alt="#">
                                                       </a>
                                                       <div class="content">
@@ -775,7 +775,7 @@ h5,h6{font-size:1em;}
      });
 
      $(function () {
-          $("#comment-container").load(/*[[@{/commends/{id}(id=${blog.id})}]]*/"comments/2");
+          $("#comment-container").load(/*[[@{/commends/{id}(id=${blog.id})}]]*/"comments/6");
      });
 
 

@@ -1,7 +1,7 @@
 body {
     /*背景图片*/
     background: url("../image/bg.jpg") no-repeat fixed !important;
-    background-size: 1600px !important;
+    background-size: cover !important;
 }
 
 .m-padded-tb-mini {

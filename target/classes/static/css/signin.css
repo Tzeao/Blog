@@ -16,7 +16,7 @@ body {
     padding-top: 40px;
     padding-bottom: 40px;
     background: url("../image/error500.jpg") no-repeat !important;
-    background-size: 100% 750px !important;
+    background-size: cover !important;
 "
     /*background-color: #f5f5f5;*/
 }

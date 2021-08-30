@@ -31,6 +31,10 @@ public class SingUpController {
 
     }
 
+    /**
+     *
+     * @return  注册账号
+     */
     @PostMapping("/sing")
     public String sing(User user,Model model) {
         String username = user.getUsername();
@@ -47,7 +51,7 @@ public class SingUpController {
             user.setCreateTime(new Date());
             user.setUpdateTime(new Date());
             userService.saveUser(user);
-            return "/admin/login";
+            return "admin/login";
         } else {
             model.addAttribute("test","aa");
             return "admin/sing-up";
