@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{20200101-cc0f0c1509531, jquery.scrollto, semantic-ui}" />
+    <file url="file://$PROJECT_DIR$" libraries="{20200101-cc0f0c1509531, L2Dwidget, autoload, font-awesome, jquery.scrollto, semantic-ui}" />
     <file url="PROJECT" libraries="{@types/jquery, bootstrap, bootstrap-grid, jquery, jquery.scrollto, semantic}" />
     <includedPredefinedLibrary name="HTTP Response Handler" />
     <includedPredefinedLibrary name="Nashorn" />

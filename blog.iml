@@ -156,5 +156,8 @@
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-event:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-web:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.owasp.encoder:encoder:1.2.2" level="project" />
+    <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="autoload" level="application" />
+    <orderEntry type="library" name="L2Dwidget" level="application" />
   </component>
 </module>
