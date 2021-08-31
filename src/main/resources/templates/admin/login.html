@@ -30,16 +30,14 @@
       </label>
       <div align="center">
             <button class="btn btn-lg btn-primary btn-block" type="submit"
-                    style="width:150px;border: 10px!important;background: #bb99ff">登录
+                  style="width: 180px!important;" >登录
             </button>
+                  <a th:href="@{/admin/singup}" style="width: 180px!important;"   class="btn btn-lg btn-primary btn-block">注册</a>
       </div>
       <br>
       <div class="ui error mini message"></div>
       <div class="ui negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
 </form>
-<div class="ui stackable" style="position: absolute;top: 480px;right: 640px">
-      <a th:href="@{/admin/singup}"  style="width:150px;border: 10px!important;background: #bb99ff" class="ui button">注册</a>
-</div>
 <!--引入jquery-->
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!--引入semantic-ui js代码-->
